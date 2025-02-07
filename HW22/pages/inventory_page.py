@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from HW22.pages.base_page import BasePage
 
+
 class InventoryPage(BasePage):
     BACKPACK_BTN = (By.ID, "add-to-cart-sauce-labs-backpack")
     TSHIRT_BTN = (By.ID, "add-to-cart-sauce-labs-bolt-t-shirt")

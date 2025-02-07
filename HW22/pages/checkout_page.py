@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from HW22.pages.base_page import BasePage
 
+
 class CheckoutPage(BasePage):
     CHECKOUT_BTN = (By.ID, "checkout")
 

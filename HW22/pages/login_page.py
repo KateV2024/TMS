@@ -23,8 +23,9 @@ class LoginPage(BasePage):
     def get_error_message(self):
         return self.find_element(self.ERROR_MESSAGE).text
 
-    def valid_login(self):
+
+    def logged_user(self):
         self.get_login_page()
-        self.enter_username(name)
-        self.enter_password(password)
+        self.enter_username("standard_user")
+        self.enter_password("secret_sauce")
         self.click_login()
