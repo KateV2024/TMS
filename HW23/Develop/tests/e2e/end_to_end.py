@@ -4,20 +4,20 @@ from HW23.Develop.pages.cart_page import CartPage
 from HW23.Develop.pages.inventory_page import InventoryPage
 from HW23.Develop.pages.checkout_step_one import CheckoutStep1Page
 from HW23.Develop.pages.checkout_step_two import CheckoutStep2Page
-from HW23.Develop.pages.last_page import CheckoutFinalPage
+from HW23.Develop.pages.complete_order_page import CheckoutFinalPage
 
 
 def test_integration_auth_and_inventory(driver):
     login_page = LoginPage(driver)
     login_page.valid_login()
 
-    assert "inventory" in driver.current_url, "Ошибка в интеграции"
+    assert "inventory" in driver.current_url, "Юзер не авторизовался и перешел на лист с продуктами"
 
     inventory = InventoryPage(driver)
     inventory.click_on_backpack_btn()
     inventory.click_on_cart_icon()
 
-    assert "cart" in driver.current_url, "Ошибка в интеграции"
+    assert "cart" in driver.current_url, "Юзер не перешел в корзину"
 
     cart = CartPage(driver)
     cart.count_products_in_cart()
@@ -27,7 +27,7 @@ def test_integration_auth_and_inventory(driver):
     checkout = CheckoutPage(driver)
     checkout.items_checkout()
 
-    assert "checkout-step-one" in driver.current_url, "Ошибка в интеграции"
+    assert "checkout-step-one" in driver.current_url, "Юзер не перешел на страницу с введением личной информации"
 
     firstCheckout = CheckoutStep1Page(driver)
     firstCheckout.fill_out_first_name("Kate")
@@ -35,7 +35,7 @@ def test_integration_auth_and_inventory(driver):
     firstCheckout.fill_out_zip_code("12345")
     firstCheckout.click_continue_btn()
 
-    assert "checkout-step-two" in driver.current_url, "Ошибка в интеграции"
+    assert "checkout-step-two" in driver.current_url, "Юзер не перешел ко второму шагу чекаута"
 
     secondCheckout = CheckoutStep2Page(driver)
 
@@ -44,7 +44,7 @@ def test_integration_auth_and_inventory(driver):
 
     secondCheckout.click_finish_btn()
 
-    assert "checkout-complete" in driver.current_url, "Ошибка в интеграции"
+    assert "checkout-complete" in driver.current_url, "Юзер не сделал успешно заказ"
 
     lastPage = CheckoutFinalPage(driver)
 
@@ -53,6 +53,6 @@ def test_integration_auth_and_inventory(driver):
 
     lastPage.return_to_home_btn()
 
-    assert "inventory" in driver.current_url, "Ошибка в интеграции"
+    assert "inventory" in driver.current_url, "Юзер не вернулся на страницу с товарами"
 
     print ("Finish. E2E Test is complete")

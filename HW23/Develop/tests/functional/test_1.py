@@ -7,4 +7,4 @@ def test_empty_fields(driver):
     login_page.click_login()
     login_page.get_error_message()
 
-    assert login_page.get_error_message() == "Epic sadface: Username is required", 'Неверно'
+    assert login_page.get_error_message() == "Epic sadface: Username is required", 'Неверно введенный логин'
