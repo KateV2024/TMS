@@ -14,7 +14,7 @@ def test_inventory(driver):
     product_page.click_on_tshirt_btn()
     product_page.click_on_cart_icon()
 
-    assert "cart" in driver.current_url, "Ошибка"
+    assert "cart" in driver.current_url, "Ошибка, юзер не попал в корзину"
 
 
 
