@@ -7,6 +7,7 @@ cursor = conn.cursor()
 cursor.execute("SELECT * from users;")
 
 # Получаем результат
+
 db_version = cursor.fetchall()
 print(f"Всем юзеры {db_version}")
 
