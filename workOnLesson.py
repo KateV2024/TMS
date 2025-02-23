@@ -1,5 +1,6 @@
 import sqlite3
 
+
 # Подключаемся к базе данных (создаст файл, если его нет)
 conn = sqlite3.connect("university.db")
 cursor = conn.cursor()

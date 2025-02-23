@@ -50,6 +50,7 @@ conn.commit()
 print("✅ Таблицы успешно созданы!")
 
 # Заполнение таблицы users
+
 cursor.executemany("""
 INSERT INTO users (name, email, age, country) VALUES (?, ?, ?, ?)
 """, [
