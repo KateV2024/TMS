@@ -1,0 +1,111 @@
+Index: HW22/tests/test_inventory.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from lesson22.pages.login_page import LoginPage\r\nfrom lesson22.pages.inventory_page import InventoryPage\r\n\r\n\r\ndef test_valid_inventory(driver):\r\n    login_page = LoginPage(driver)\r\n    login_page.valid_login()\r\n    inventory_page = InventoryPage(driver)\r\n    assert \"inventory\" in driver.current_url, \"Ошибка: логин не удался\"\r\n\r\n    inventory_page.move_to_cart()\r\n\r\n    assert \"cart\" in driver.current_url, \"Ошибка: не совершён переход в корзину\"\r\n
+===================================================================
+diff --git a/HW22/tests/test_inventory.py b/HW22/tests/test_inventory.py
+--- a/HW22/tests/test_inventory.py	(revision 561f08c1237a14521f656d5163bdb6fddcc8f7b8)
++++ b/HW22/tests/test_inventory.py	(date 1738931348722)
+@@ -1,11 +1,12 @@
+-from lesson22.pages.login_page import LoginPage
+-from lesson22.pages.inventory_page import InventoryPage
++from HW22.pages.login_page import LoginPage
++from HW22.pages.inventory_page import InventoryPage
+ 
+ 
+ def test_valid_inventory(driver):
+     login_page = LoginPage(driver)
+     login_page.valid_login()
+     inventory_page = InventoryPage(driver)
++
+     assert "inventory" in driver.current_url, "Ошибка: логин не удался"
+ 
+     inventory_page.move_to_cart()
+Index: HW22/pages/cart_page.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from selenium.webdriver.common.by import By\r\nfrom lesson22.pages.base_page import BasePage\r\n\r\n\r\nclass CartPage(BasePage):\r\n    ITEMS_IN_CART = (By.CLASS_NAME, 'cart_item')\r\n    def count_products_in_cart(self):\r\n        return len(self.driver.find_elements(*self.ITEMS_IN_CART))\r\n\r\n    def return_product(self):\r\n        return self.driver.find_elements(*self.ITEMS_IN_CART)[0].find_element(By.CLASS_NAME, 'inventory_item_name').text
+===================================================================
+diff --git a/HW22/pages/cart_page.py b/HW22/pages/cart_page.py
+--- a/HW22/pages/cart_page.py	(revision 561f08c1237a14521f656d5163bdb6fddcc8f7b8)
++++ b/HW22/pages/cart_page.py	(date 1738931139786)
+@@ -1,5 +1,5 @@
+ from selenium.webdriver.common.by import By
+-from lesson22.pages.base_page import BasePage
++from HW22.pages.base_page import BasePage
+ 
+ 
+ class CartPage(BasePage):
+Index: HW22/pages/checkout_page.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from selenium.webdriver.common.by import By\r\nfrom lesson22.pages.base_page import BasePage\r\n\r\n\r\nclass CheckoutPage(BasePage):\r\n    CHECKOUT_BTN = (By.ID, \"checkout\")\r\n\r\n    def items_checkout(self):\r\n        self.click_element(self.CHECKOUT_BTN)\r\n\r\n
+===================================================================
+diff --git a/HW22/pages/checkout_page.py b/HW22/pages/checkout_page.py
+--- a/HW22/pages/checkout_page.py	(revision 561f08c1237a14521f656d5163bdb6fddcc8f7b8)
++++ b/HW22/pages/checkout_page.py	(date 1738931139814)
+@@ -1,5 +1,5 @@
+ from selenium.webdriver.common.by import By
+-from lesson22.pages.base_page import BasePage
++from HW22.pages.base_page import BasePage
+ 
+ 
+ class CheckoutPage(BasePage):
+Index: HW22/pages/inventory_page.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from selenium.webdriver.common.by import By\r\nfrom lesson22.pages.base_page import BasePage\r\n\r\n\r\nclass InventoryPage(BasePage):\r\n    BACKPACK_BTN = (By.ID, \"add-to-cart-sauce-labs-backpack\")\r\n    CART_ICON = (By.CLASS_NAME, \"shopping_cart_link\")\r\n    def click_on_backpack_btn(self):\r\n        self.click_element(self.BACKPACK_BTN)\r\n\r\n    def click_on_cart_icon(self):\r\n        self.click_element(self.CART_ICON)\r\n\r\n    def move_to_cart(self):\r\n        self.click_element(self.BACKPACK_BTN)\r\n        self.click_element(self.CART_ICON)
+===================================================================
+diff --git a/HW22/pages/inventory_page.py b/HW22/pages/inventory_page.py
+--- a/HW22/pages/inventory_page.py	(revision 561f08c1237a14521f656d5163bdb6fddcc8f7b8)
++++ b/HW22/pages/inventory_page.py	(date 1738931139794)
+@@ -1,5 +1,5 @@
+ from selenium.webdriver.common.by import By
+-from lesson22.pages.base_page import BasePage
++from HW22.pages.base_page import BasePage
+ 
+ 
+ class InventoryPage(BasePage):
+Index: HW22/tests/test_cart_page.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from lesson22.pages.login_page import LoginPage\r\nfrom lesson22.pages.inventory_page import InventoryPage\r\nfrom lesson22.pages.cart_page import CartPage\r\n\r\n\r\ndef test_cart_with_items(driver):\r\n    login_page = LoginPage(driver)\r\n    login_page.valid_login()\r\n    inventory_page = InventoryPage(driver)\r\n\r\n    assert \"inventory\" in driver.current_url, \"Ошибка: логин не удался\"\r\n    inventory_page.move_to_cart()\r\n\r\n    assert \"cart\" in driver.current_url, \"Ошибка: не совершён переход в корзину\"\r\n\r\n    filled_cart = CartPage(driver)\r\n\r\n    assert filled_cart.count_products_in_cart() == 1\r\n    assert filled_cart.return_product() == \"Sauce Labs Backpack\"\r\n
+===================================================================
+diff --git a/HW22/tests/test_cart_page.py b/HW22/tests/test_cart_page.py
+--- a/HW22/tests/test_cart_page.py	(revision 561f08c1237a14521f656d5163bdb6fddcc8f7b8)
++++ b/HW22/tests/test_cart_page.py	(date 1738931139804)
+@@ -1,6 +1,6 @@
+-from lesson22.pages.login_page import LoginPage
+-from lesson22.pages.inventory_page import InventoryPage
+-from lesson22.pages.cart_page import CartPage
++from HW22.pages.login_page import LoginPage
++from HW22.pages.inventory_page import InventoryPage
++from HW22.pages.cart_page import CartPage
+ 
+ 
+ def test_cart_with_items(driver):
+Index: HW22/tests/test_checkout.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from lesson22.pages.checkout_page import CheckoutPage\r\nfrom lesson22.pages.login_page import LoginPage\r\nfrom lesson22.pages.inventory_page import InventoryPage\r\n\r\n\r\ndef test_checkout(driver):\r\n    login_page = LoginPage(driver)\r\n    login_page.valid_login()\r\n    inventory_page = InventoryPage(driver)\r\n    assert \"inventory\" in driver.current_url, \"Ошибка: логин не удался\"\r\n\r\n    inventory_page.move_to_cart()\r\n\r\n    assert \"cart\" in driver.current_url, \"Ошибка: не совершён переход в корзину\"\r\n\r\n    checkout = CheckoutPage(driver)\r\n    checkout.items_checkout()\r\n\r\n    assert \"checkout\" in driver.current_url, \"Ошибка: не совершён переход в чекаут\"\r\n
+===================================================================
+diff --git a/HW22/tests/test_checkout.py b/HW22/tests/test_checkout.py
+--- a/HW22/tests/test_checkout.py	(revision 561f08c1237a14521f656d5163bdb6fddcc8f7b8)
++++ b/HW22/tests/test_checkout.py	(date 1738931305918)
+@@ -1,12 +1,13 @@
+-from lesson22.pages.checkout_page import CheckoutPage
+-from lesson22.pages.login_page import LoginPage
+-from lesson22.pages.inventory_page import InventoryPage
++from HW22.pages.checkout_page import CheckoutPage
++from HW22.pages.login_page import LoginPage
++from HW22.pages.inventory_page import InventoryPage
+ 
+ 
+ def test_checkout(driver):
+     login_page = LoginPage(driver)
+     login_page.valid_login()
+     inventory_page = InventoryPage(driver)
++
+     assert "inventory" in driver.current_url, "Ошибка: логин не удался"
+ 
+     inventory_page.move_to_cart()
