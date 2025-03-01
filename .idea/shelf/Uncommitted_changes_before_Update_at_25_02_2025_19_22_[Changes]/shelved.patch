@@ -1,0 +1,1899 @@
+Index: HW3/Homework3.py
+===================================================================
+diff --git a/HW3/Homework3.py b/HW3/Homework3.py
+deleted file mode 100644
+--- a/HW3/Homework3.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,67 +0,0 @@
+-# Task 1 Привести к целому типу -1.6, 2.99
+-
+-number_1 = 1.6
+-print(int(number_1))
+-number_2 = 2.99
+-print(int(number_2))
+-
+-# Task 2 Заменить символ “#” на символ “/” в строке 'www.my_site.com#about'
+-
+-string = "www.my_site.com#about"
+-string_1 = string.replace("#", "/")
+-print(string_1)
+-
+-# Task 3 Напишите программу, которая добавляет ‘ing’ к слову ‘stroka’
+-
+-word = "stroka"
+-print(word + "ing")
+-
+-# Task 4 В строке “Ivanou Ivan” поменяйте местами слова => "Ivan Ivanou"
+-
+-a = "Ivanou Ivan"
+-last_name, first_name = a.split()
+-updated_name = " ".join([first_name, last_name])
+-print(updated_name)
+-
+-# Task 5 Напишите программу которая удаляет пробел в начале, в конце строки
+-
+-text = "  I love learning Python   "
+-text_trimmed = text.strip(" ")
+-print(text_trimmed)
+-
+-# Task 6 Создайте словарь, связав его с переменной school, и наполните его
+-# данными которые бы отражали количество учащихся в десяти разных
+-# классах (например, 1а, 1б, 2б, 6а, 7в и т.д.).
+-
+-dict = {
+-    "1a": 15,
+-    "1b": 16,
+-    "2a": 19,
+-    "2d": 24,
+-    "2b": 19,
+-    "3a": 15,
+-    "3b": 17,
+-    "3c": 21,
+-    "4a": 17,
+-    "4b": 21
+-}
+-print(dict)
+-
+-# Task 7. Создайте список и извлеките из него списка второй элемент
+-
+-mylist = ["apple", "banana", "cherry"]
+-print(mylist[2])
+-
+-# 8. Вывести входит ли строка1 в строку2 (пример: employ и employment )
+-
+-a = "employment"
+-b = "employ"
+-if b in a:
+-    print("yes")
+-
+-
+-# 9. Вывести нужные символы
+-
+-x = "My name is Agent Smith"
+-print(x[1])
+-print(x[3:16:3])
+Index: HW10/Task1_10.py
+===================================================================
+diff --git a/HW10/Task1_10.py b/HW10/Task1_10.py
+deleted file mode 100644
+--- a/HW10/Task1_10.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,144 +0,0 @@
+-from abc import ABC, abstractmethod
+-from typing import List
+-
+-"""
+-# Цветочница.
+-
+-# Определить иерархию и создать несколько цветов.
+-Собрать букет с использованием аксессуаров с
+-определением его стоимости.
+-
+-# Определить время его увядания по среднему времени
+-жизни всех цветов в букете.
+-
+-# Позволить сортировку цветов по стоимости.
+-
+-# Узнать, есть ли цветок в букете.
+-"""
+-
+-
+-class Flower(ABC):
+-    """Абстрактный класс для цветов."""
+-
+-    def __init__(self, name: str, cost: float, lifespan: int):
+-        """
+-        Инициализация цветка.
+-        :param name: Название цветка.
+-        :param cost: Стоимость цветка.
+-        :param lifespan: Время жизни цветка (в часах).
+-        """
+-        self.name = name
+-        self.cost = cost
+-        self.lifespan = lifespan
+-
+-    @abstractmethod
+-    def __str__(self):
+-        """Возвращает строковое представление цветка."""
+-        pass
+-
+-class Rose(Flower):
+-    def __str__(self):
+-        return f"Rose {super().__str__()}"
+-
+-
+-class Tulip(Flower):
+-    def __str__(self):
+-        return f"Tulip {super().__str__()}"
+-
+-class Daisy(Flower):
+-    def __str__(self):
+-        return (f"Daisy {super().__str__()}")
+-
+-class Accessory:
+-    """Класс для аксессуаров."""
+-
+-    def __init__(self, name: str, cost: float):
+-        """
+-        Инициализация аксессуара.
+-        :param name: Название аксессуара.
+-        :param cost: Стоимость аксессуара.
+-        """
+-        self.name = name
+-        self.cost = cost
+-
+-    def __str__(self):
+-        return f"Accessory(name={self.name}, cost={self.cost})"
+-
+-class Bouquet:
+-    """Класс для букета."""
+-
+-    def __init__(self):
+-        self.flowers: List[Flower] = []
+-        self.accessories: List[Accessory] = []
+-
+-    def add_flower(self, flower: Flower):
+-        """Добавить цветок в букет."""
+-        self.flowers.append(flower)
+-
+-    def add_accessory(self, accessory: Accessory):
+-        """Добавить аксессуар в букет."""
+-        self.accessories.append(accessory)
+-
+-    def calculate_cost(self) -> float:
+-        """Рассчитать общую стоимость букета."""
+-        flower_cost = sum(flower.cost for flower in self.flowers)
+-        accessory_cost = sum(accessory.cost for accessory in self.accessories)
+-        return flower_cost + accessory_cost
+-
+-    def average_lifespan(self) -> float:
+-        """Определить среднее время увядания букета."""
+-        if not self.flowers:
+-            return 0
+-        return sum(flower.lifespan for flower in self.flowers) / len(self.flowers)
+-
+-    def sort_by_cost(self):
+-        """Сортировать цветы в букете по стоимости."""
+-        self.flowers = sorted(self.flowers, key=lambda flower: flower.cost)
+-
+-    def contains_flower(self, flower_name: str) -> bool:
+-        """Проверить, есть ли цветок в букете."""
+-        return any(flower.name == flower_name for flower in self.flowers)
+-
+-    def __str__(self):
+-        bouquet_items = "\n".join(str(flower) for flower in self.flowers)
+-        accessories = "\n".join(str(accessory) for accessory in self.accessories)
+-        return f"Bouquet:\nFlowers:\n{bouquet_items}\nAccessories:\n{accessories}"
+-
+-
+-# Пример использования
+-if __name__ == "__main__":
+-    # Создание цветов
+-    rose = Rose(name="Rose", cost=5.0, lifespan=72)
+-    tulip = Tulip(name="Tulip", cost=3.0, lifespan=48)
+-    daisy = Daisy(name="Daisy", cost=2.5, lifespan=36)
+-
+-    # Создание аксессуаров
+-    ribbon = Accessory(name="Ribbon", cost=1.0)
+-    paper = Accessory(name="Wrapping Paper", cost=2.0)
+-
+-    # Создание букета
+-    bouquet = Bouquet()
+-    bouquet.add_flower(rose)
+-    bouquet.add_flower(tulip)
+-    bouquet.add_flower(daisy)
+-    bouquet.add_accessory(ribbon)
+-    bouquet.add_accessory(paper)
+-
+-    # Вывод
+-
+-    print(bouquet)
+-
+-    # Стоимость букета
+-    print("\nTotal cost:", bouquet.calculate_cost())
+-
+-    # Среднее время жизни
+-    print("Average lifespan (hours):", bouquet.average_lifespan())
+-
+-    # Сортировка цветов по стоимости
+-    bouquet.sort_by_cost()
+-    print("\nBouquet after sorting by cost:")
+-    print(bouquet)
+-
+-    # Проверка на наличие цветка
+-    print("\nContains 'Rose':", bouquet.contains_flower("Rose"))
+-    print("Contains 'Orchid':", bouquet.contains_flower("Orchid"))
+Index: HW6/test2.py
+===================================================================
+diff --git a/HW6/test2.py b/HW6/test2.py
+deleted file mode 100644
+--- a/HW6/test2.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,23 +0,0 @@
+-# Дан файл целых чисел, содержащий не менее четырех элементов.
+-# Вывести первый, второй, предпоследний и последний элементы данного файла.
+-# Если чисел меньше 3 выводить ошибку
+-
+-def find_four_digits(file):
+-    digits = []
+-    with open("test.txt", "r") as file:
+-        for line in file:
+-            my_list = line.split(", ")
+-            for char in my_list:
+-                if char.isdigit():
+-                    digits.extend(my_list)
+-        if len(digits) <= 3:
+-            return "error"
+-        else:
+-            return [digits[0], digits[1], digits[-2], digits[-1]]
+-
+-file = "test.txt"
+-result = find_four_digits(file)
+-print(result)
+-
+-
+-
+Index: HW19/src/shop.py
+===================================================================
+diff --git a/HW19/src/shop.py b/HW19/src/shop.py
+deleted file mode 100644
+--- a/HW19/src/shop.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,23 +0,0 @@
+-class Shop:
+-    def __init__(self):
+-        self.cart = {}
+-
+-    def add_to_cart(self, item, quantity=1):
+-        """Добавляет товар в корзину."""
+-        if quantity <= 0:
+-            raise ValueError("Количество должно быть больше 0")
+-        self.cart[item] = self.cart.get(item, 0) + quantity
+-        return self.cart
+-
+-    def calculate_total(self, prices):
+-        """Рассчитывает общую стоимость корзины."""
+-        total = 0
+-        for item, quantity in self.cart.items():
+-            total += prices.get(item, 0) * quantity
+-        return total
+-
+-    def apply_discount(self, total, discount):
+-        """Применяет скидку к общей стоимости."""
+-        if discount < 0 or discount > 100:
+-            raise ValueError("Скидка должна быть от 0 до 100")
+-        return total - (total * discount / 100)
+Index: HW7/Task4_7.py
+===================================================================
+diff --git a/HW7/Task4_7.py b/HW7/Task4_7.py
+deleted file mode 100644
+--- a/HW7/Task4_7.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,24 +0,0 @@
+-# Необходимо составить список чисел, которые указывают на
+-# длину слов в строке
+-# sentence ="thequick brown fox jumps over the lazy dog"
+-# но только если слово не с  the с обработкой исключения
+-
+-import re
+-
+-
+-def word_lengths(sentence):
+-    words = re.split(r'\s+', sentence)
+-    word_lengths = []
+-    for word in words:
+-        try:
+-            if word.startswith("the"):
+-                raise BaseException
+-            word_lengths.append(len(word))
+-        except:
+-                print("the is found")
+-
+-    return word_lengths
+-
+-sentence = "thequick brown fox jumps over the lazy dog"
+-result = word_lengths(sentence)
+-print(result)
+\ No newline at end of file
+Index: HW9/Class_methods.py
+===================================================================
+diff --git a/HW9/Class_methods.py b/HW9/Class_methods.py
+deleted file mode 100644
+--- a/HW9/Class_methods.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,32 +0,0 @@
+-class Math_operations:
+-    @staticmethod
+-    def add(a, b):
+-        return a + b
+-
+-    @classmethod
+-    def multiply(cls, a, b):
+-        return a * b
+-
+-print(Math_operations.add(3, 5))
+-print(Math_operations.multiply(3, 5))
+-
+-
+-# Example 2
+-
+-class BankAccount:
+-    def __init__(self, balance):
+-        self.__balance = balance
+-
+-    @property
+-    def balance(self):
+-        return self.__balance
+-
+-    @balance.setter
+-    def balance(self, amount):
+-        self.__balance = amount
+-
+-account = BankAccount(1000)
+-print(account.balance)
+-account.balance = 500
+-print(account.balance)
+-
+Index: HW9/Polimorfism_and_Inheritance.py
+===================================================================
+diff --git a/HW9/Polimorfism_and_Inheritance.py b/HW9/Polimorfism_and_Inheritance.py
+deleted file mode 100644
+--- a/HW9/Polimorfism_and_Inheritance.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,44 +0,0 @@
+-# Наследование
+-
+-class Plants:
+-    def grow_and_root(self):
+-        return "Имеют листья и корни"
+-
+-class Trees (Plants):
+-    def type_of_plants(self):
+-        return "Один из видов растений"
+-
+-class Flowers (Plants):
+-    def bloom_and_smell(self):
+-        return "Цветут"
+-
+-apple = Trees()
+-rose = Flowers()
+-
+-print(apple.grow_and_root())
+-print(apple.type_of_plants())
+-print(rose.grow_and_root())
+-print(rose.bloom_and_smell())
+-
+-# Полиморфизм
+-
+-# class Car:
+-#   def __init__(self, brand, model):
+-#     self.brand = brand
+-#     self.model = model
+-#
+-#   def move(self):
+-#     print("Drive!")
+-#
+-# class Plane:
+-#   def __init__(self, brand, model):
+-#     self.brand = brand
+-#     self.model = model
+-#
+-#   def move(self):
+-#     print("Fly!")
+-#
+-# car1 = Car("Audi", "A7")
+-# plane1 = Plane("Boeing", "777")
+-# for x in (car1, plane1):
+-#   x.move()
+\ No newline at end of file
+Index: HW6/test4.py
+===================================================================
+diff --git a/HW6/test4.py b/HW6/test4.py
+deleted file mode 100644
+--- a/HW6/test4.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,54 +0,0 @@
+-# Даны два файла произвольного типа. Поменять местами их содержимое.
+-# Файлы должны быть бинарного типа
+-
+-with open("test1.bin", "wb") as file:
+-    file.writelines(
+-        [
+-            "Content of the first file\n".encode(),
+-            "1st file\n".encode()
+-        ]
+-)
+-
+-with open("test2.bin", "wb") as file:
+-    file.writelines(
+-        [
+-            "Content of the second file\n".encode(),
+-            "2nd file\n".encode()
+-        ]
+-)
+-
+-with open("test1.bin", "rb") as file:
+-    file1_content = []
+-    for line in file:
+-        line = line.decode()
+-        file1_content.append(line)
+-print(f"this is 1st file content: {file1_content}")
+-
+-with open("test2.bin", "rb") as file:
+-    file2_content = []
+-    for line in file:
+-        line = line.decode()
+-        file2_content.append(line)
+-print(f"this is 2st file content: {file2_content}")
+-
+-with open("test1.bin", "wb") as file:
+-    for line in file2_content:
+-        file.write(line.encode())
+-
+-with open("test2.bin", "wb") as file:
+-    for line in file1_content:
+-        file.write(line.encode())
+-
+-with open("test1.bin", "rb") as file:
+-    file1_content = []
+-    for line in file:
+-        line = line.decode()
+-        file1_content.append(line)
+-print(f"this is 1st file content: {file1_content}")
+-
+-with open("test2.bin", "rb") as file:
+-    file2_content = []
+-    for line in file:
+-        line = line.decode()
+-        file2_content.append(line)
+-print(f"this is 2st file content: {file2_content}")
+\ No newline at end of file
+Index: HW7/Task1_7.py
+===================================================================
+diff --git a/HW7/Task1_7.py b/HW7/Task1_7.py
+deleted file mode 100644
+--- a/HW7/Task1_7.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,5 +0,0 @@
+-# Создать лямбда функцию, которая принимает на вход имя
+-# и выводит его в формате "Hello, {name}"
+-
+-func = lambda name: f"Hello, {name}"
+-print(func("Kate"))
+Index: HW19/conftest.py
+===================================================================
+diff --git a/HW19/conftest.py b/HW19/conftest.py
+deleted file mode 100644
+--- a/HW19/conftest.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,6 +0,0 @@
+-import pytest
+-from src.shop import Shop
+-
+-@pytest.fixture()
+-def shop():
+-    return Shop()
+Index: HW7/Task3_7.py
+===================================================================
+diff --git a/HW7/Task3_7.py b/HW7/Task3_7.py
+deleted file mode 100644
+--- a/HW7/Task3_7.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,18 +0,0 @@
+-# Напишите генератор, который принимает список
+-# numbers = [34.6, -203.4, 44.9, 68.3, -12.2, 44.6, 12.7]
+-# и возвращает новый список только с положительными числами
+-
+-
+-numbers = [34.6, -203.4, 44.9, 68.3, -12.2, 44.6, 12.7]
+-
+-def find_positives(numbers):
+-    for number in numbers:
+-        if number > 0:
+-            yield number
+-
+-positives = find_positives(numbers)
+-print(next(positives))
+-
+-for element in positives:
+-    print(element)
+-
+Index: HW9/Incapsulation.py
+===================================================================
+diff --git a/HW9/Incapsulation.py b/HW9/Incapsulation.py
+deleted file mode 100644
+--- a/HW9/Incapsulation.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,11 +0,0 @@
+-class Student:
+-    __country = "Belarus"
+-
+-    def __bank_account(self):
+-        print ("Мы не можем предоставить личную информацию")
+-
+-    def country_of_birth(self):
+-        print("Наш студент родом из ", Student.__country)
+-pupil = Student()
+-pupil.country_of_birth()
+-pupil.__bank_account()
+Index: HW8/Task1_8.py
+===================================================================
+diff --git a/HW8/Task1_8.py b/HW8/Task1_8.py
+deleted file mode 100644
+--- a/HW8/Task1_8.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,77 +0,0 @@
+-# Написать функцию для факторила, генератор и рекурсию и сравнить время их работы
+-
+-import math
+-import time
+-import datetime
+-
+-
+-# Рекурсия
+-
+-start_time = datetime.datetime.now()
+-
+-def factorial(n):
+-    if n == 0:
+-        return 1
+-    else:
+-        return n * factorial(n - 1)
+-
+-print(factorial(5))
+-
+-end_time = datetime.datetime.now()
+-rekursia_time = end_time - start_time
+-print(f"Время исполнения рекурсии в микросекундах: ", rekursia_time)
+-
+-# Импорт
+-
+-start_time_import = datetime.datetime.now()
+-math.factorial(5)
+-
+-end_time_import = datetime.datetime.now()
+-import_time_execution = end_time_import - start_time_import
+-print(f"Время исполнения импорта в микросекундах: ", import_time_execution)
+-
+-# Функция
+-
+-start_time_func = datetime.datetime.now()
+-
+-number = 5
+-def factorial(number):
+-    factorial = 1
+-    while number > 0:
+-        factorial *= number
+-        number = number - 1
+-    return factorial
+-result = factorial(number)
+-print(result)
+-
+-end_time_func = datetime.datetime.now()
+-def_time_execution = end_time_func - start_time_func
+-print(f"Время исполнения функции в микросекундах: ", def_time_execution)
+-
+-# Генератор
+-
+-start_time_gen = datetime.datetime.now()
+-
+-def generator():
+-    factorial = 1
+-    for number in range(6):
+-            if number > 0:
+-                factorial *= number
+-            yield factorial
+-
+-result_1 = generator()
+-print(next(result_1))
+-for number in result_1:
+-    print(number)
+-
+-
+-end_time_gen = datetime.datetime.now()
+-gen_time_execution = end_time_gen - start_time_gen
+-print(f"Время исполнения генератора в микросекундах: ", gen_time_execution)
+-
+-# Найти лучший результатов экзекьюшена
+-
+-def best_result(result):
+-    return min(result)
+-best_time = best_result({gen_time_execution, import_time_execution, def_time_execution, rekursia_time})
+-print(f"Найлучшее время экзекьюшена", best_time)
+Index: HW18/Hometask18_Medium.py
+===================================================================
+diff --git a/HW18/Hometask18_Medium.py b/HW18/Hometask18_Medium.py
+deleted file mode 100644
+--- a/HW18/Hometask18_Medium.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,33 +0,0 @@
+-import pytest
+-
+-from selenium import webdriver
+-from selenium.webdriver.common.by import By
+-from selenium.webdriver.chrome.service import Service
+-from selenium.webdriver.chrome.options import Options
+-from selenium.webdriver.support.ui import Select
+-from webdriver_manager.chrome import ChromeDriverManager
+-
+-
+-# Medium level
+-def test_dropdown_options():
+-    # Настройка WebDriver
+-    options = Options()
+-    options.add_argument("--start-maximized")
+-    service = Service(ChromeDriverManager().install())
+-    driver = webdriver.Chrome(service=service, options=options)
+-
+-    try:
+-        # Шаг 1: Перейти на страницу
+-        driver.get("https://omayo.blogspot.com/")
+-
+-        # Шаг 2: Работа с выпадающим списком
+-        dropdown = driver.find_element(By.ID, "drop1")
+-        dropdown1 = Select(dropdown)
+-
+-        # Шаг 3: Выбрать опцию 3
+-        dropdown1.select_by_visible_text('doc 3')
+-        assert dropdown1.first_selected_option.text == "doc 3", "Option 'doc 3' was not selected!"
+-
+-    finally:
+-        # Закрытие браузера
+-        driver.quit()
+Index: HW6/test1.py
+===================================================================
+diff --git a/HW6/test1.py b/HW6/test1.py
+deleted file mode 100644
+--- a/HW6/test1.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,36 +0,0 @@
+-# Дан файл целых чисел. Создать два новых файла, первый из которых
+-# содержит четные числа из исходного файла, а второй — нечетные (в том
+-# же порядке). Если четные или нечетные числа в исходном файле
+-# отсутствуют, то соответствующий результирующий файл оставить пустым.
+-
+-def identify_digits(file):
+-    numbers = []
+-
+-    with open(file, "r") as file:
+-
+-        even_numbers = []
+-        odd_numbers = []
+-
+-        for line in file:
+-            my_list = line.split(", ")
+-            for char in my_list:
+-                if char.isdigit():
+-                    num = int(char)
+-                    numbers.append(num)
+-                    if num % 2 == 0:
+-                        even_numbers.append(num)
+-                    else:
+-                        odd_numbers.append(num)
+-
+-    with open("result2.txt", "w") as file2:
+-        file2.write(", ".join(map(str, even_numbers)) + "\n")
+-
+-    with open("result1.txt", "w") as file1:
+-        file1.write(", ".join(map(str, odd_numbers)) + "\n")
+-
+-    return numbers
+-
+-
+-file = "test.txt"
+-result = identify_digits(file)
+-print(", ".join(map(str, result)))
+Index: HW17/app/task_manager.py
+===================================================================
+diff --git a/HW17/app/task_manager.py b/HW17/app/task_manager.py
+deleted file mode 100644
+--- a/HW17/app/task_manager.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,48 +0,0 @@
+-class TaskManager:
+-    def __init__(self):
+-        """Инициализация менеджера задач с пустым списком."""
+-        self.tasks = []
+-
+-    def add_task(self, name, priority="normal"):
+-        """
+-        До бавляет задачу в список.
+-
+-        :param name: Название задачи
+-        :param priority: Приоритет задачи ('low', 'normal', 'high')
+-        :return: Словарь с добавленной задачей
+-        """
+-        if priority not in ["low", "normal", "high"]:
+-            raise ValueError("Приоритет должен быть 'low', 'normal' или 'high'")
+-        task = {"name": name, "priority": priority, "completed": False}
+-        self.tasks.append(task)
+-        return task
+-
+-    def list_tasks(self):
+-        """Возвращает список всех задач."""
+-        return self.tasks
+-
+-    def mark_task_completed(self, name):
+-        """
+-        Отмечает задачу как выполненную.
+-
+-        :param name: Название задачи
+-        :return: Обновленная задача
+-        """
+-        for task in self.tasks:
+-            if task["name"] == name:
+-                task["completed"] = True
+-                return task
+-        raise ValueError("Задача с таким названием не найдена")
+-
+-    def remove_task(self, name):
+-        """
+-        Удаляет задачу из списка.
+-
+-        :param name: Название задачи
+-        :return: Удаленная задача
+-        """
+-        for task in self.tasks:
+-            if task["name"] == name:
+-                self.tasks.remove(task)
+-                return task
+-        raise ValueError("Задача с таким названием не найдена")
+Index: HW8/Task3_8.py
+===================================================================
+diff --git a/HW8/Task3_8.py b/HW8/Task3_8.py
+deleted file mode 100644
+--- a/HW8/Task3_8.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,29 +0,0 @@
+-# лексикографическое возрастание
+-
+-number_names = {
+-    0: "Zero",
+-    1: "One",
+-    2: "Two",
+-    3: "Three",
+-    4: "Four",
+-    5: "Five",
+-    6: "Six",
+-    7: "Seven",
+-    8: "Eight",
+-    9: "Nine",
+-    10: "Ten",
+-    11: "Eleven",
+-    12: "Twelve",
+-    13: "Thirteen",
+-    14: "Fourteen",
+-    15: "Fifteen"
+- }
+-
+-numbers = {1, 2, 6, 8, 9, 11}
+-def find_sorting(numbers):
+-    numbers1 = sorted(numbers, key = lambda value: number_names[value])
+-
+-    return numbers1
+-
+-res = find_sorting(numbers)
+-print(" ".join(str(e) for e in res))
+Index: HW6/test3.py
+===================================================================
+diff --git a/HW6/test3.py b/HW6/test3.py
+deleted file mode 100644
+--- a/HW6/test3.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,21 +0,0 @@
+-# 3 Дан файл вещественных чисел. Заменить в нем все элементы на их квадраты.
+-
+-def find_squared_numbers(file):
+-    squared_numbers = []
+-    with open("test.txt", "r") as file:
+-        for line in file:
+-            my_list = line.split(", ")
+-            for char in my_list:
+-                if char.isdigit():
+-                    num = int(char)
+-                    squared_numbers.append(num ** 2)
+-    return squared_numbers
+-
+-
+-
+-file = "test.txt"
+-result = find_squared_numbers(file)
+-print(result)
+-
+-with open("test.txt", "w") as file:
+-    file.write(", ".join(map(str, result)))
+\ No newline at end of file
+Index: HW7/Task2_7.py
+===================================================================
+diff --git a/HW7/Task2_7.py b/HW7/Task2_7.py
+deleted file mode 100644
+--- a/HW7/Task2_7.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,11 +0,0 @@
+-# Создать лямбда функцию, которая принимает на вход список имен
+-# и выводит его в формате "Hello, {name}" вдругой список
+-
+-func = lambda name: f"Hello, {name}"
+-
+-def find_name(names):
+-    return [f"Hello, {name}" for name in names]
+-
+-names = {"Sveta", "Sasha", "Kate"}
+-new_list = find_name(names)
+-print(new_list)
+\ No newline at end of file
+Index: HW21/HW21.py
+===================================================================
+diff --git a/HW21/HW21.py b/HW21/HW21.py
+deleted file mode 100644
+--- a/HW21/HW21.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,230 +0,0 @@
+-from importlib.metadata import files
+-from operator import contains
+-
+-import pytest
+-import time
+-import os
+-from selenium import webdriver
+-from selenium.webdriver.common.by import By
+-from selenium.webdriver.chrome.service import Service
+-from selenium.webdriver.chrome.options import Options
+-from webdriver_manager.chrome import ChromeDriverManager
+-from selenium.webdriver.common.action_chains import ActionChains
+-from selenium.webdriver.support.ui import WebDriverWait
+-from selenium.webdriver.support import expected_conditions as EC
+-
+-
+-@pytest.fixture()
+-def driver():
+-    options = Options()
+-    options.add_argument("--start-maximized")
+-    service = Service(ChromeDriverManager().install())
+-    config_driver = webdriver.Chrome(service=service, options=options)
+-    yield config_driver
+-    config_driver.quit()
+-
+-
+-def test_task1(driver):
+-    driver.get("https://demoqa.com/browser-windows")
+-    driver.find_element(By.ID, "tabButton").click()
+-    opened_handles = driver.window_handles
+-    driver.switch_to.window(opened_handles[1])
+-    assert driver.find_element(By.ID, "sampleHeading").text == "This is a sample page", \
+-        "Текст не соответствует"
+-    driver.close()
+-    driver.switch_to.window(opened_handles[0])
+-    assert driver.current_window_handle == opened_handles[0]
+-
+-
+-def test_task2(driver):
+-    driver.get("https://demoqa.com/frames")
+-    driver.switch_to.frame("frame1")
+-    assert driver.find_element(By.ID, "sampleHeading").text == "This is a sample page"
+-    driver.switch_to.default_content()
+-    driver.switch_to.frame("frame2")
+-    assert driver.find_element(By.ID, "sampleHeading").text == "This is a sample page"
+-
+-
+-def test_task3(driver):
+-    driver.get("https://demoqa.com/alerts")
+-    alert_button1 = driver.find_element(By.ID, "alertButton")
+-    driver.execute_script("arguments[0].scrollIntoView();", alert_button1)
+-    alert_button1.click()
+-    alert1 = driver.switch_to.alert
+-    assert alert1.text == "You clicked a button"
+-    alert1.accept()
+-    alert_button2 = driver.find_element(By.ID, "confirmButton")
+-    driver.execute_script("arguments[0].scrollIntoView();", alert_button2)
+-    alert_button2.click()
+-    alert2 = driver.switch_to.alert
+-    assert alert2.text == "Do you confirm action?"
+-    alert2.dismiss()
+-    alert_button3 = driver.find_element(By.ID, "promtButton")
+-    driver.execute_script("arguments[0].scrollIntoView();", alert_button3)
+-    alert_button3.click()
+-    alert3 = driver.switch_to.alert
+-    assert alert3.text == "Please enter your name"
+-    alert3.send_keys("Selenium Test")
+-    alert3.accept()
+-    result = driver.find_element(By.ID, "promptResult")
+-    assert "Selenium Test" in result.text
+-
+-
+-def test_task4(driver):
+-    driver.get("https://www.google.com")
+-    available_services = driver.find_element(By.ID, "SIvCob")
+-    assert "Google offered in: polski" in available_services.text
+-    driver.quit()
+-
+-# Настройте папку загрузок, загрузите файл PDF с сайта https://file-examples.com,
+-# и убедитесь, что файл сохранён в указанную папку.
+-
+-@pytest.fixture()
+-def driver():
+-    """Pytest fixture to set up and tear down the WebDriver instance."""
+-    download_dir = "C:/Users/volch/Downloads"
+-
+-    # Chrome options with download preferences
+-    chrome_options = Options()
+-    chrome_options.add_argument("--start-maximized")
+-
+-    chrome_options.add_experimental_option("prefs", {
+-        "download.default_directory": download_dir,
+-        "download.prompt_for_download": False,
+-        "download.directory_upgrade": True,
+-        "safebrowsing.enabled": True
+-    })
+-
+-    # Set up the WebDriver
+-    service = Service(ChromeDriverManager().install())
+-    config_driver = webdriver.Chrome(service=service, options=chrome_options)
+-    yield config_driver
+-    config_driver.quit()
+-
+-
+-def test_task4_2(driver):
+-    """Test to download a file and verify the download."""
+-    download_dir = "C:/Users/volch/Downloads"
+-    file_name = "file-sample_100kB.doc"
+-
+-    # Set up explicit wait
+-    wait = WebDriverWait(driver, 10)
+-
+-    # Open the website
+-    driver.get("https://file-examples.com/")
+-
+-    # Close the cookie window
+-    close_cookie_window(driver)
+-    wait.until(EC.element_to_be_clickable((By.ID, "menu-item-27"))).click()
+-    assert "index.php/sample-documents-download/" in driver.current_url, "Failed to navigate to documents page"
+-
+-    # Scroll to and click the first file link
+-    files = driver.find_elements(By.CSS_SELECTOR, ".text-right.file-link > a")
+-    actions = ActionChains(driver)
+-    actions.move_to_element(files[0]).perform()
+-    files[0].click()
+-    close_ads(driver)
+-
+-    # Verify navigation to the file page
+-    assert "index.php/sample-documents-download/sample-doc-download/" in driver.current_url, "Failed to navigate to file page"
+-
+-    # Click the download button
+-    file_sizes = driver.find_elements(By.CSS_SELECTOR, ".btn.btn-orange.btn-outline.btn-xl.page-scroll.download-button")
+-    actions.move_to_element(file_sizes[0]).perform()
+-    file_sizes[0].click()
+-
+-    # Check if the file is downloaded
+-    check_download(wait, download_dir, file_name)
+-
+-
+-def close_cookie_window(driver):
+-    """Close the cookie banner if present."""
+-    try:
+-        cookie_close_button = WebDriverWait(driver, 10).until(
+-            EC.element_to_be_clickable((By.CLASS_NAME, "fc-button.fc-cta-consent.fc-primary-button"))
+-        )
+-        cookie_close_button.click()
+-    except Exception:
+-        print("No cookie banner to close.")
+-
+-
+-def check_download(wait, download_dir, file_name):
+-    """Wait for the file to appear in the download directory."""
+-    wait.until(lambda driver: os.path.exists(os.path.join(download_dir, file_name)), "File not downloaded")
+-    print("Download completed!")
+-
+-
+-def close_ads(driver):
+-    """Перебирает все рекламные iframes, ищет кнопку 'Close' и закрывает рекламу."""
+-    try:
+-        # Находим все iframes на странице
+-        all_iframes = driver.find_elements(By.TAG_NAME, "iframe")
+-        print(f"Found {len(all_iframes)} iframes on the page.")
+-
+-        for iframe in all_iframes:
+-            try:
+-                iframe_id = iframe.get_attribute("id")
+-                if not iframe_id or not iframe_id.startswith("aswift"):
+-                    continue  # Пропускаем не относящиеся к рекламе iframes
+-
+-                print(f"Trying to switch to iframe: {iframe_id}")
+-                driver.switch_to.frame(iframe)
+-
+-                # Проверяем кнопку закрытия сразу в этом iframe
+-                try:
+-                    ad_close_button = WebDriverWait(driver, 2).until(
+-                        EC.element_to_be_clickable((By.ID, "dismiss-button"))
+-                    )
+-                    ad_close_button.click()
+-                    print("Ad banner closed in main iframe.")
+-                    driver.switch_to.default_content()
+-                    return  # Выходим из функции сразу
+-
+-                except Exception:
+-                    print("No close button found in main iframe, checking nested iframe.")
+-
+-                # Ищем вложенный iframe с рекламой
+-                try:
+-                    nested_iframe = driver.find_element(By.TAG_NAME, "iframe")
+-                    driver.switch_to.frame(nested_iframe)
+-                    print("Switched to nested ad_iframe.")
+-
+-                    # Проверяем кнопку закрытия внутри вложенного iframe
+-                    ad_close_button = WebDriverWait(driver, 2).until(
+-                        EC.element_to_be_clickable((By.ID, "dismiss-button"))
+-                    )
+-                    ad_close_button.click()
+-                    print("Ad banner closed in nested iframe.")
+-                    driver.switch_to.default_content()
+-                    return  # Выходим из функции сразу
+-
+-                except Exception:
+-                    print(f"No ad found in nested iframe of {iframe_id}, switching back.")
+-
+-            except Exception as e:
+-                print(f"Error switching to iframe {iframe_id}: {e}")
+-
+-            finally:
+-                driver.switch_to.default_content()  # Возвращаемся в основной контент
+-
+-        print("No ads found in any iframe.")
+-
+-    except Exception as e:
+-        print(f"General error while handling ads: {e}")
+-
+-    finally:
+-        driver.switch_to.default_content()
+-        print("Returned to main content.")
+-
+-def test_work_with_actions(driver):
+-    try:
+-        driver.get("https://jqueryui.com/droppable/")
+-        driver.switch_to.frame(driver.find_element(By.CLASS_NAME, "demo-frame"))
+-        source_element = driver.find_element(By.ID, "draggable")
+-        target_element = driver.find_element(By.ID, "droppable")
+-        actions = ActionChains(driver)
+-        actions.drag_and_drop(source_element, target_element).perform()
+-        assert "Dropped" in target_element.text, "Drag and drop action failed"
+-
+-    finally:
+-        driver.quit()
+Index: HW5/homework5.py
+===================================================================
+diff --git a/HW5/homework5.py b/HW5/homework5.py
+deleted file mode 100644
+--- a/HW5/homework5.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,81 +0,0 @@
+-# Напищите программу, которая заменит символ “#” на символ “/” в строке 'www.my_site.com#about'
+-
+-def replace_element(word1):
+-    word1 = word1.replace("#", "/")
+-    return word1
+-
+-word1 = "www.my_site.com#about"
+-new_word = replace_element(word1)
+-print(new_word)
+-
+-# Напишите программу, которая добавляет ‘ing’ к слову ‘stroka’
+-
+-def add_element(word):
+-    word = word + "ing"
+-    return word
+-
+-word = "stroka"
+-result = add_element(word)
+-print(result)
+-
+-# В строке “Ivanou Ivan” поменяйте местами слова => "Ivan Ivanou"
+-
+-def change_place(surname_name):
+-    last_name, first_name = surname_name.split()
+-    updated_name = " ".join([first_name, last_name])
+-    return updated_name
+-
+-surname_name = "Иванов Иван"
+-new_name = change_place(surname_name)
+-print(new_name)
+-
+-# Вывести входит ли строка1 в строку2 (пример: employ и employment )
+-
+-def str1_included_in_str2(str1, str2):
+-    if str1 in str2:
+-        return str1 in str2
+-    else:
+-        return False
+-
+-str1 = "employ"
+-str2 = "employment"
+-result1 = str1_included_in_str2(str1, str2)
+-print(result1)
+-
+-# Дан список ["I", "love", "arrays", "they", "are", "my", "favorite"] - сделайте из него строку
+-
+-def make_str(c):
+-    c = " ".join(c)
+-    return c
+-
+-c = ["I", "love", "arrays", "they", "are", "my", "favorite"]
+-new_c = make_str(c)
+-print(new_c)
+-
+-# Дано целое число в диапазоне 1–7. Вывести строку — название дня недели, соответствующее данному числу
+-
+-# def find_weekday(dict, key):
+-#     if key in dict:
+-#         return dict[key]
+-#     else:
+-#         return "error"
+-# dict = {1: "Mon", 2: "Tue",3: "Wed", 4: "Thur", 5: "Fri", 6: "Sat", 7: "Sun"}
+-# key = int(input("Enter the number: "))
+-# v = find_weekday(dict, key)
+-# print(f"Day is {v}")
+-
+-# # Деду M лет, а внуку N лет. Через сколько лет дед станет вдвое старше
+-# #  внука.  И сколько при этом лет будет деду и внуку.
+-
+-def find_year( M, N, i):
+-
+-    while (N + i)* 2 != M + i:
+-        i += 1
+-    return M + i, N + i, i
+-
+-M = int(input("Enter M: "))
+-N = int(input("Enter N: "))
+-i = 0
+-let = find_year(M , N , i)
+-grandfather_age, grandson_age, years = let
+-print(f"Деду будет {grandfather_age}, внуку {grandson_age}  через {years} лет")
+Index: HW6/result2.txt
+===================================================================
+diff --git a/HW6/result2.txt b/HW6/result2.txt
+deleted file mode 100644
+--- a/HW6/result2.txt	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,1 +0,0 @@
+-256, 4096
+Index: HW18/Hometask18_High.py
+===================================================================
+diff --git a/HW18/Hometask18_High.py b/HW18/Hometask18_High.py
+deleted file mode 100644
+--- a/HW18/Hometask18_High.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,46 +0,0 @@
+-import pytest
+-import time
+-from selenium.webdriver.common.by import By
+-from selenium import webdriver
+-from selenium.webdriver.chrome.service import Service
+-from selenium.webdriver.chrome.options import Options
+-from webdriver_manager.chrome import ChromeDriverManager
+-
+-def test_adding_new_record():
+-    # Настройка WebDriver
+-    options = Options()
+-    options.add_argument("--start-maximized")
+-    service = Service(ChromeDriverManager().install())
+-    driver = webdriver.Chrome(service=service, options=options)
+-
+-    try:
+-        # Шаг 1: Перейти на страницу и нажать "Добавить запись в таблицу"
+-        driver.get("https://demoqa.com/webtables")
+-        addNewRecord = driver.find_element(By.ID, "addNewRecordButton")
+-        addNewRecord.click()
+-
+-        # Шаг 2: Добавить строчку в таблицу
+-        driver.find_element(By.ID, "firstName").send_keys("John")
+-        driver.find_element(By.ID, "lastName").send_keys("Doe")
+-        driver.find_element(By.ID, "userEmail").send_keys("john.doe@example.com")
+-        driver.find_element(By.ID, "age").send_keys("30")
+-        driver.find_element(By.ID, "salary").send_keys("50000")
+-        driver.find_element(By.ID, "department").send_keys("IT")
+-        driver.find_element(By.ID, "submit").click()
+-
+-        # Шаг 3: Ожидать добавления новой строки в таблицу
+-        time.sleep(5)
+-
+-        # Шаг 4: Проверить, что строчка добавилась
+-        rows = driver.find_elements(By.CLASS_NAME, "rt-tr-group")
+-        added_row = None
+-        for row in rows:
+-            if "John" in row.text and "Doe" in row.text:
+-                added_row = row
+-                break
+-
+-        assert added_row is not None, "John is not added"
+-
+-    finally:
+-        # Закрытие браузера
+-        driver.quit()
+Index: HW19/tests/test_shop.py
+===================================================================
+diff --git a/HW19/tests/test_shop.py b/HW19/tests/test_shop.py
+deleted file mode 100644
+--- a/HW19/tests/test_shop.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,18 +0,0 @@
+-import pytest
+-from src.shop import Shop
+-
+-
+-@pytest.mark.parametrize("cart, item, quantity, expected", [
+-    ({}, "Apple", 2, {"Apple": 2}),
+-    ({"Apple": 2}, "Banana", 2, {"Apple": 2, "Banana": 2}),
+-    ({"Apple": 2, "Banana": 2}, "Pear", 0, ValueError)
+-]
+-)
+-def test_add_to_cart(shop, cart, item, quantity, expected):
+-    shop.cart = cart
+-    if quantity > 0:
+-        assert shop.add_to_cart(item, quantity) == expected
+-    else:
+-        with pytest.raises(ValueError):
+-            shop.add_to_cart(item, quantity)
+-
+Index: HW4/homework4.py
+===================================================================
+diff --git a/HW4/homework4.py b/HW4/homework4.py
+deleted file mode 100644
+--- a/HW4/homework4.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,403 +0,0 @@
+-# Работа с переменными:
+-#  1. Переменной var_int присвойте значение 10, var_float - значение 8.4, var_str - "No".
+-from enum import unique
+-
+-var_int = 10
+-var_float = 8.4
+-var_str = "No"
+-
+-# 2. Измените значение, хранимое в переменной var_int, увеличив его в 3.5 раза, результат свяжите с переменной big_int.
+-
+-big_int = var_int * 3.5
+-
+-# 3. Измените значение, хранимое в переменной var_float, уменьшив его на единицу,результат свяжите с той же переменной.
+-
+-var_float = var_float - 1
+-
+-# 4. Разделите var_int на var_float, а затем big_int на var_float.Результат не привязывайте ни к каким переменным.
+-
+-print(var_int/var_float)
+-print(big_int/var_float)
+-
+-# 5. Измените значение переменной var_str на "NoNoYesYesYes". Используйте конкатенацию (+) и повторение строки (*).
+-
+-var_str = ("No" * 2 + "Yes" * 3)
+-
+-# 6. Выведите значения всех переменных.
+-
+-print(var_int)
+-print(var_float)
+-print(var_str)
+-print(big_int)
+-print(var_float)
+-
+-# Строки:
+-#  1. Свяжите переменную с любой строкой, состоящей не менее чем из 8 символов.
+-#  Извлеките из строки первый символ, затем последний, третий с начала и третий с
+-#  конца. Измерьте длину вашей строки.
+-
+-str1 = "We process data"
+-print(str1[0])
+-print(str1[-1])
+-print(str1[3])
+-print(str1[-3])
+-print(len(str1))
+-
+-#  2. Присвойте произвольную строку длиной 10-15 символов переменной и извлеките из
+-#  нее следующие срезы:
+-#  ● первые восемь символов
+-#  ● четыре символа из центра строки
+-#  ● символы с индексами кратными трем
+-#  ● переверните строку
+-
+-str2 = "Select one or multiple newsletters"
+-print(str2[:8])
+-print(str2[15:20])
+-print(str2[0:35:3])
+-print(str2[::-1])
+-rev_str2 = "".join(reversed(str2)) # Variant 2
+-print(rev_str2)
+-
+-#  3. Есть строка: “my name is name”. Напечатайте ее, но вместо 2ого “name” вставьте ваше имя.
+-
+-name = "Kate"
+-print(f"my name is {name}")
+-
+-#  4. Есть строка: test_tring = "Hello world!", необходимо
+-#  ● напечатать на каком месте находится буква w
+-#  ● кол-во букв l
+-#  ● Проверить начинается ли строка с подстроки: “Hello”
+-#  ● Проверить заканчивается ли строка подстрокой: “qwe”
+-
+-test_tring = "Hello world!"
+-print(test_tring.find("w"))
+-print(test_tring.count("l"))
+-print(test_tring.startswith("Hello"))
+-print(test_tring.endswith("qwe"))
+-
+-# Списки
+-
+-list1 = ["Piotr", "Paulina", "Maryia"]
+-list2 = ["dog", "cat", "budgie", "tortoise"]
+-print(list1[1])
+-list2 = ["dog", "cat", "budgie", "mouse"]
+-print(list2)
+-list_combined = list1 + list2
+-print(list_combined)
+-list_changed = list_combined[1:6:1]
+-print(list_changed)
+-new_elements = ["Mike", "hamster"]
+-list_changed.extend(new_elements)
+-print(list_changed)
+-a = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+-b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+-c_set = set(a) & set(b)
+-print(list(c_set))
+-x = [1, 2, 3, 4, 3, 2, 5, 1, 4, 6, 7, 1, 8, 2, 3]
+-y = list(set(x))
+-print(y)
+-
+-# Логические операции:
+-#  1. Присвойте двум переменным любые числовые значения.
+-
+-num1 = 2
+-num2 = 8
+-
+-#  2. Составьте четыре сложных логических выражения с помощью оператора and, два из
+-#  которых должны давать истину, а два других - ложь.
+-
+-print(num1 < num2 and num1 * 4 == num2)
+-print(num1 > 0 and num2 > 0)
+-print(num1 > num2 and num2 > 0)
+-print(num1 - 1 == num2 and num1**4 > 0)
+-
+-#  3. Аналогично выполните п. 2, но уже используя оператор or.
+-
+-print(num1 < num2 or num1 * 4 == num2)
+-print(num1 > 0 or num2 > 0)
+-print(num1 > num2 or num2 < 0)
+-print(num1 - 1 == num2 or num1**4 < num2)
+-
+-#  4. Попробуйте использовать в сложных логических выражениях работу с переменными строкового типа.
+-name1 = "Katrin"
+-name2 = "John"
+-print(name1 == name2 or type(name1) == type(name2))
+-print(len(name1) == len(name2) and type(name1) == type(name2))
+-print(len(name1) > len(name2) and name1.startswith("K") == True)
+-
+-# Словари
+-
+-school = {
+-    "1a": 13,
+-    "1b": 18,
+-    "1c": 23,
+-    "2a": 26,
+-    "3a": 24,
+-    "3b": 19,
+-    "4a": 17,
+-    "4b": 22,
+-    "4c": 19,
+-    "4d": 18
+-}
+-print(school["1a"])
+-print(school["2a"])
+-school["1a"] = 15
+-school["1b"] = 17
+-school["1c"] = 20
+-school["5a"] = 21
+-school.update({"5b": 28})
+-school.pop("4d")
+-print(school)
+-
+-# Преобразование типов. Перевести строку в массив
+-
+-str_1 =  "Robin Singh"
+-array = str_1.split(" ")
+-print(array)
+-
+-# Дан список. Напечатайте текст: “Привет, Ivan Ivanou! Добро пожаловать в Minsk Belarus”
+-
+-new_list =  ["Ivan", "Ivanou"]
+-str_2 = "Minsk"
+-str_3 = "Belarus"
+-print("Привет, " + " ".join(new_list) + "! Добро пожаловать в " + str_2 + " "+ str_3)
+-
+-# Дан список ["I", "love", "arrays", "they", "are", "my", "favorite"] - сделайте из него строку
+-
+-list_4 = ["I", "love", "arrays", "they", "are", "my", "favorite"]
+-print(" ".join(list_4))
+-
+-# Создайте список из 10 элементов, вставьте на 3-ю позицию новое значение,
+-#  удалите элемент из списка под индексом 6
+-
+-list_5 = ["Capitan", "Jack","Sparrow", "Elizabeth", "David", "Jones", "Mermaid", "Pirate", "Witch"]
+-list_5.insert(3, "princess")
+-list_5.pop(6)
+-print(list_5)
+-
+-#  Необходимо объединить 2 словаря по ключам, а значения ключей поместить в список, если у
+-#  одного словаря есть ключ "а", а у другого нету, то поставить значение None на
+-#  соответствующую позицию
+-
+-a = { 'a': 1, 'b': 2, 'c': 3}
+-b = { 'c': 3, 'd': 4,'e': 5}
+-c = {k:[a.get(k, None), b.get(k, None)] for k in sorted(set(a)|set(b))}
+-print(c)
+-
+-# Вывести уникальное число из массива
+-
+-array1 =  [1, 5, 2, 9, 2, 9, 1]
+-
+-def find_unique_element(array1):
+-    for element in array1:
+-        if array1.count(element) == 1:
+-            return element
+-    return None
+-
+-print(find_unique_element(array1))
+-
+-# найти самую частую букву в тексте. Результатом должна быть буква в нижнем регистре.
+-
+-text = "I am Kate. I am from Belarus."
+-text = text.lower()
+-letters = [char for char in text if char.isalpha()]
+-unique_letters = set(letters)
+-most_common_letter = max(unique_letters, key = letters.count)
+-print(most_common_letter)
+-
+-#  Условия
+-# Дано целое число. Если оно является положительным, то прибавить к нему 1; в
+-#  противном случае не изменять его. Вывести полученное число.
+-
+-pos_number = int(input("Введите число: "))
+-if pos_number > 0:
+-    print(pos_number + 1)
+-else:
+-    print(pos_number)
+-
+-# Даны три целых числа. Найти количество положительных чисел в исходном наборе.
+-
+-a1 = int(input("Введите первое число: "))
+-b1 = int(input("Введите второе число: "))
+-c1 = int(input("Введите третье число: "))
+-pos_count = 0
+-if a1 > 0:
+-   pos_count += 1
+-if b1 > 0:
+-   pos_count += 1
+-if c1 > 0:
+-   pos_count += 1
+-print(pos_count)
+-
+-#  Дан номер года (положительное целое число). Определить количество дней в этом году
+-
+-year = int(input("введите год: "))
+-if year % 4 == 0 and year % 400 == 0 or year % 100 != 0:
+-    print("В этом году 366 дней")
+-else:
+-    print("В этом году 365 дней")
+-
+-#  Дано целое число в диапазоне 1–7. Вывести строку — название дня недели,
+-#  соответствующее данному числу
+-
+-x = int(input("Введите значение от 1 до 7: "))
+-if x == 1:
+-    print("1 - Monday")
+-elif x == 2:
+-    print("2 - Tuesday")
+-elif x == 3:
+-    print("3 - Wednesday")
+-elif x == 4:
+-    print("4 - Thursday")
+-elif x == 5:
+-    print("5 - Friday")
+-elif x == 6:
+-    print("6 - Saturday")
+-elif x == 7:
+-    print("7 -Sunday")
+-else:
+-    print("Bad request")
+-
+-# Variant 2
+-
+-# week = {1: "Пн", 2: "Вт",
+-#          3: "Ср", 4: "Чт", 5: "Пт",
+-#         6: "Сб", 7: "Вс"}
+-# int_week = int(input("Введите от 1 до 7 :  "))
+-# if int_week <= 0 or int_week > 7:
+-#     print("Введено неверное значение")
+-# else:
+-#     print(week.get(int_week))
+-
+-# Найти массу тела в килограммах.
+-
+-unit = {1: "Килограмм", 2: "Миллиграмм", 3: "грамм", 4: "Тонна", 5: "Центнер"}
+-int_unit = int(input("Введите значение от 1 до 5: "))
+-if int_unit == 1:
+-    print("1 кг")
+-elif int_unit == 2:
+-    print("0.000002 кг")
+-elif int_unit == 3:
+-    print("0.003 кг")
+-elif int_unit == 4:
+-    print("4000 кг")
+-elif int_unit == 5:
+-    print("500000 кг")
+-else:
+-    print("Wrong number")
+-
+-#  # Цикл for
+-#  # 1. Даны два целых числа A и B (A < B). Найти сумму всех целых чисел от A до B включительно.
+-
+-A = int(input("Введите А: "))
+-B = int(input("Введите B: "))
+-sum = 0
+-for i in range(A, B + 1):
+-    sum += 1
+-print(sum)
+-
+-#  # 2. Найти сумму всех натуральных чисел в от A до B
+-
+-A1 = int(input("Введите А1: "))
+-B1 = int(input("Введите B1: "))
+-sum1 = 0
+-for i in range(A1, B1):
+-    sum1 += i
+-print(sum1)
+-
+-#  # 3. Найти произведение положительных, сумму и количество отрицательных
+-#  # из 10 введенных целых значений.
+-
+-product_positive = 1
+-sum_negative = 0
+-count_negative = 0
+-for i in range(10):
+-    num = int(input(f"Введите целое число ({i + 1}/10): "))
+-    if num > 0:
+-        product_positive *= num
+-    elif num < 0:
+-        sum_negative += num
+-        count_negative += 1
+-print("Произведение положительных чисел:", product_positive)
+-print("Сумма отрицательных чисел:", sum_negative)
+-print("Количество отрицательных чисел:", count_negative)
+-
+-# Дан словарь пловцов с их результатами. Напечатать лучший результат
+-#  заплыва среди 6 участников.
+-
+-participants = {
+-    "Бекиш Александр": 21.07,
+-    "Будник Алексей": 20.34,
+-    "Гребень Анастасия": 22.12,
+-    "Давидович Татьяна": 30,
+-    "Дешук Дмитрий": 24.01,
+-    "Казак Анна": 28.17
+-}
+-
+-best_result = min(participants.values())
+-print(best_result)
+-
+-# min_value = float("Inf")
+-# for value in participants.values():
+-#     if value < min_value:
+-#         min_value = value
+-# print(min_value)
+-
+-# Напишите программу, которая будет выводить уникальное число
+-
+-ar = [1, 5, 2, 9, 2, 9, 1]
+-unique_number = 0
+-for num in ar:
+-    unique_number ^= num
+-print(unique_number)
+-
+-# # Цикл while
+-# # Дано число N. Найти произведение всех чисел от 0 до N.
+-
+-N = int(input("Enter the number: "))
+-mltpl = 1
+-i = 1
+-while i < N:
+-     mltpl *= i
+-     i += 1
+-print(mltpl)
+-
+-# Через сколько лет площадь первых сортов будет
+-#  составлять меньше 10% от площади вторых сортов.
+-
+-S1 = int(input("Enter S1: "))
+-S2 = int(input("Enter S2: "))
+-i = 0
+-while S1  >= S2 * 0.1:
+-    S1 = 2 * S1
+-    S2 = 3 * S2
+-    i += 1
+-
+-print(i)
+-
+-# Дано целое число R (>0). Используя операции деления нацело и взятия
+-#  остатка от деления, найти количество и сумму его цифр.
+-
+-R = int(input("Enter R: "))
+-ostatok = 0
+-tseloe = 0
+-while R > 0 :
+-    tseloe = R // 10
+-    ostatok = R % 10
+-    break
+-
+-print(tseloe)
+-print(ostatok)
+-print(ostatok + tseloe)
+-
+-# Деду M лет, а внуку N лет. Через сколько лет дед станет вдвое старше
+-#  внука.  И сколько при этом лет будет деду и внуку.
+-
+-M = int(input("Enter M: "))
+-N = int(input("Enter N: "))
+-i = 0
+-while (N + i)* 2 != M + i:
+-    i += 1
+-print(i)
+-print(N + i)
+-print(M + i)
+\ No newline at end of file
+Index: HW8/Task2_8.py
+===================================================================
+diff --git a/HW8/Task2_8.py b/HW8/Task2_8.py
+deleted file mode 100644
+--- a/HW8/Task2_8.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,39 +0,0 @@
+-# Создать декоратор
+-
+-def typed(type):
+-    def decorator(func):
+-        def wrapper(*args, **kwargs):
+-            new_args = []
+-
+-            if type == "str":
+-                check_type = str
+-            elif type == "int":
+-                check_type = int
+-            elif type == "float":
+-                check_type = float
+-
+-            for arg in args:
+-                if isinstance(arg, check_type):
+-                    new_args.append(arg)
+-                else:
+-                    new_args.append(check_type(arg))
+-
+-            return func(*new_args, **kwargs)
+-        return wrapper
+-    return decorator
+-
+-@typed(type="str")
+-def foo_str(*args, **kwargs):
+-    return "".join(args)
+-
+-print(foo_str("3", 5))  # "35"
+-print(foo_str(5, 5))  # "55"
+-print(foo_str("a", "b"))  # "ab"
+-
+-@typed(type="float")
+-def foo_float(*args, **kwargs):
+-    return sum(args)
+-
+-print(foo_float(5, 6, 7))  # 18.0
+-print(foo_float("3", 5, 0))  # 8.0
+-print(foo_float(0.1, 0.2, 0.3))  # 0.6
+Index: HW17/tests/test_task_manager.py
+===================================================================
+diff --git a/HW17/tests/test_task_manager.py b/HW17/tests/test_task_manager.py
+deleted file mode 100644
+--- a/HW17/tests/test_task_manager.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,83 +0,0 @@
+-import pytest
+-from lesson17.app.task_manager import TaskManager
+-import allure
+-
+-@pytest.fixture
+-def task_manager():
+-    return TaskManager()
+-
+-@allure.feature("Task Management")
+-@allure.story("Add Tasks")
+-@allure.severity(allure.severity_level.CRITICAL)
+-def test_add_task_and_set_priority(task_manager):
+-    with allure.step("Create new Tasks"):
+-        add_task_and_set_priority = TaskManager()
+-
+-    with allure.step("Add tasks with varying priorities"):
+-        add_task_and_set_priority.add_task('TASK1', 'normal')
+-        add_task_and_set_priority.add_task('task2', 'low')
+-        add_task_and_set_priority.add_task('Task3', 'high')
+-
+-    with allure.step("Verify the number of tasks added"):
+-        assert len(add_task_and_set_priority.tasks) == 3
+-
+-@allure.feature("Task Management")
+-@allure.story("Invalid Priority")
+-@allure.severity(allure.severity_level.CRITICAL)
+-def test_raising_error_for_invalid_priority(task_manager):
+-    with allure.step("Create a task with invalid priority"):
+-        raising_error_for_invalid_priority = TaskManager()
+-
+-    with allure.step("Raising an error for invalid priority"):
+-        with pytest.raises(ValueError, match="Приоритет должен быть 'low', 'normal' или 'high'"):
+-            raising_error_for_invalid_priority.add_task('Invalid Task', '12234')
+-
+-
+-@allure.feature("Task Management")
+-@allure.story("Checking that task is completed")
+-@allure.severity(allure.severity_level.CRITICAL)
+-def test_mark_task_completed(task_manager):
+-    with allure.step("Check for completed task"):
+-        task_completed = TaskManager()
+-
+-    with allure.step("Add a new task"):
+-        task_completed.add_task('Task4', 'low')
+-    with allure.step("Mark task completed"):
+-        updated_task = task_completed.mark_task_completed('Task4')
+-    with allure.step("Check the task is really completed"):
+-        assert updated_task['completed'] is True
+-    with allure.step("Check task #4 is completed"):
+-        assert updated_task['name'] == 'Task4'
+-
+-@allure.feature("Task Management")
+-@allure.story("Checking raising error for incomplete task")
+-@allure.severity(allure.severity_level.NORMAL)
+-def test_mark_task_completed_raises_error(task_manager):
+-    with allure.step("Error check"):
+-        error_for_incomplete_task = TaskManager()
+-    with allure.step("Check for error message"):
+-        with pytest.raises(ValueError, match="Задача с таким названием не найдена"):
+-            error_for_incomplete_task.mark_task_completed('NonExistentTask')
+-
+-@allure.feature("Task Management")
+-@allure.story("Checking that task is removed")
+-@allure.severity(allure.severity_level.CRITICAL)
+-def test_remove_task(task_manager):
+-    with allure.step("Error check"):
+-        deleted_task = TaskManager()
+-    with allure.step("Add a new task"):
+-        deleted_task.add_task('Task5', 'low')
+-    with allure.step("Remove added task"):
+-        removed_task = deleted_task.remove_task('Task5')
+-    with allure.step("Check that task# 5 is removed"):
+-        assert removed_task['name'] == 'Task5'
+-
+-@allure.feature("Task Management")
+-@allure.story("Checking error for removed task")
+-@allure.severity(allure.severity_level.NORMAL)
+-def test_remove_task_raises_error(task_manager):
+-    with allure.step("Check an error"):
+-        error_for_removed_task = TaskManager()
+-    with allure.step("Error appears when calling for removed task"):
+-        with pytest.raises(ValueError, match="Задача с таким названием не найдена"):
+-            error_for_removed_task.remove_task('NonExistentTask')
+Index: HW18/TaskOnLesson.py
+===================================================================
+diff --git a/HW18/TaskOnLesson.py b/HW18/TaskOnLesson.py
+deleted file mode 100644
+--- a/HW18/TaskOnLesson.py	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,73 +0,0 @@
+-import pytest
+-
+-from selenium import webdriver
+-from selenium.webdriver.common.by import By
+-from selenium.webdriver.chrome.service import Service
+-from selenium.webdriver.chrome.options import Options
+-from webdriver_manager.chrome import ChromeDriverManager
+-
+-
+-def test_login_and_add_to_cart():
+-    # Настройка WebDriver
+-    options = Options()
+-    options.add_argument("--start-maximized")
+-    service = Service(ChromeDriverManager().install())
+-    driver = webdriver.Chrome(service=service, options=options)
+-
+-    try:
+-        # Шаг 1: Перейти на страницу логина
+-        driver.get("https://www.saucedemo.com")
+-
+-        # Шаг 2: Ввести данные для авторизации
+-        username = driver.find_element(By.ID, "user-name")
+-        password = driver.find_element(By.ID, "password")
+-        login_button = driver.find_element(By.ID, "login-button")
+-
+-        username.send_keys("standard_user")
+-        password.send_keys("secret_sauce")
+-        login_button.click()
+-
+-        # Шаг 3: Проверить, что пользователь на странице инвентаря
+-        assert "inventory" in driver.current_url, "Не удалось перейти на страницу инвентаря"
+-
+-        # Шаг 4: Добавить товар в корзину
+-        product_name = "Sauce Labs Backpack"  # Название товара
+-        add_to_cart_button = driver.find_element(By.ID, "add-to-cart-sauce-labs-backpack")
+-        add_to_cart_button.click()
+-
+-        # Шаг 5: Проверить, что товар добавлен (значок корзины)
+-        cart_badge = driver.find_element(By.CLASS_NAME, "shopping_cart_badge")
+-        assert cart_badge.text == "1", "Товар не добавлен в корзину"
+-
+-        # Шаг 6: Перейти в корзину
+-        cart_icon = driver.find_element(By.CLASS_NAME, "shopping_cart_link")
+-        cart_icon.click()
+-
+-        # Шаг 7: Проверить, что в корзине отображается добавленный товар
+-        cart_item_name = driver.find_element(By.CLASS_NAME, "inventory_item_name").text
+-        assert cart_item_name == product_name, f"Ожидался товар '{product_name}', но найден '{cart_item_name}'"
+-
+-        # Шаг 8: Проверить, что пользователь на странице инвентаря
+-        assert "cart" in driver.current_url, "Не удалось перейти на страницу cart"
+-
+-        # Шаг 9: Добавить товар в корзину
+-        checkout = driver.find_element(By.ID, "checkout")
+-        checkout.click()
+-
+-        # Шаг 3: Проверить, что пользователь на странице инвентаря
+-        assert "git checkout-step-one" in driver.current_url, "Не удалось перейти на страницу checkout"
+-
+-        # Шаг 2: Ввести данные для авторизации
+-        firstName = driver.find_element(By.ID, "first-name")
+-        lastName  = driver.find_element(By.ID, "last-name")
+-        postalCode = driver.find_element(By.ID, "postal-code")
+-        continue_icon = driver.find_element(By.ID, "continue")
+-
+-        firstName.send_keys("standard_user")
+-        lastName.send_keys("secret_sauce")
+-        postalCode.send_keys("223223")
+-        continue_icon.click()
+-
+-    finally:
+-        # Закрытие браузера
+-        driver.quit()
+Index: HW6/result1.txt
+===================================================================
+diff --git a/HW6/result1.txt b/HW6/result1.txt
+deleted file mode 100644
+--- a/HW6/result1.txt	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,1 +0,0 @@
+-1, 625, 2401, 50625
+Index: HW6/test.txt
+===================================================================
+diff --git a/HW6/test.txt b/HW6/test.txt
+deleted file mode 100644
+--- a/HW6/test.txt	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
++++ /dev/null	(revision 9d783b1f3cb7725a1ec6541e5c488515178cde4e)
+@@ -1,1 +0,0 @@
+-1, 256, 625, 4096, 2401, 50625
+\ No newline at end of file

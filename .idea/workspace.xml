@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b5d5f403-ac42-4ad4-862f-812bc9938357" name="Changes" comment="Jenkins -Feb27">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_07_02_2025_13_32_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_07_02_2025_13_32__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_25_02_2025_19_22_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_25_02_2025_19_22__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/conftest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/endpoints/base_endpoint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/endpoints/create_obj.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/endpoints/delete_obj.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/endpoints/get_obj.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/endpoints/update_obj.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/payload/payloads.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/pytest.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/tests/test_create.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/tests/test_crud.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/tests/test_delete.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/tests/test_get.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/tests/test_update.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW10/Task1_10.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW17/app/task_manager.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW17/tests/test_task_manager.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW18/Hometask18_High.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW18/Hometask18_Medium.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW18/TaskOnLesson.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW19/conftest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW19/pytest.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW19/src/shop.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW19/tests/test_shop.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW21/HW21.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW3/Homework3.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW4/homework4.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/homework5.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW6/result1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW6/result2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW6/test.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW6/test1.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW6/test1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW6/test2.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW6/test2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW6/test3.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW6/test4.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW7/Task1_7.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW7/Task2_7.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW7/Task3_7.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW7/Task4_7.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW8/Task1_8.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW8/Task2_8.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW8/Task3_8.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW9/Class_methods.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW9/Incapsulation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW9/Polimorfism_and_Inheritance.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Feature/HW27" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;KateV2024&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/KateV2024/TMS.git&quot;,
+    &quot;accountId&quot;: &quot;c5a9844f-fba3-462d-8490-5943e5e802aa&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2siBcYBXSbhg9fMShcxwvF2EjH4" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker.Dockerfile.executor": "Run",
+    "Python tests.Python tests for end_to_end.test_integration_auth_and_inventory.executor": "Run",
+    "Python tests.Python tests for test_1.test_empty_fields.executor": "Run",
+    "Python tests.Python tests for test_2.test_integration_auth_and_inventory.executor": "Run",
+    "Python tests.Python tests for test_cart.test_cart.executor": "Run",
+    "Python tests.Python tests for test_cart.test_inventory_page.executor": "Run",
+    "Python tests.Python tests for test_cart.test_make_an_order.executor": "Run",
+    "Python tests.Python tests for test_cart_page.test_cart_with_items.executor": "Run",
+    "Python tests.Python tests for test_checkout.test_cart.executor": "Run",
+    "Python tests.Python tests for test_create_obj.test_create_obj.executor": "Run",
+    "Python tests.Python tests for test_crud.test_crud_scenario.executor": "Run",
+    "Python tests.Python tests for test_delete.test_delete_obj.executor": "Run",
+    "Python tests.Python tests for test_inventory.test_inventory.executor": "Run",
+    "Python tests.Python tests for test_inventory.test_inventory_page.executor": "Run",
+    "Python tests.Python tests for test_inventory.test_valid_login.executor": "Run",
+    "Python tests.Python tests for test_login.test_login.executor": "Run",
+    "Python tests.Python tests for test_login.test_login_page.executor": "Run",
+    "Python tests.Python tests for test_login.test_valid_login.executor": "Run",
+    "Python tests.Python tests for test_make_order.test_make_an_order.executor": "Run",
+    "Python tests.Python tests in test_make_order.py.executor": "Run",
+    "Python tests.pytest for test_create.test_create_obj.executor": "Run",
+    "Python tests.pytest for test_get.test_get_obj.executor": "Run",
+    "Python tests.pytest for test_update.test_update_obj.executor": "Run",
+    "Python.13.executor": "Run",
+    "Python.HW25.executor": "Run",
+    "Python.HW27add_get_delete_user.executor": "Run",
+    "Python.LS26.executor": "Run",
+    "Python.filled.executor": "Run",
+    "Python.sqllite.executor": "Run",
+    "Python.test_cart_page.executor": "Run",
+    "Python.workOnLesson.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Feature/HW26",
+    "last_opened_file_path": "C:/Users/volch/Desktop/TMS/tests"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\volch\Desktop\TMS\tests" />
+      <recent name="C:\Users\volch\Desktop\TMS\endpoints" />
+      <recent name="C:\Users\volch\Desktop\TMS\develop" />
+      <recent name="C:\Users\volch\Desktop\TMS\HW22\tests" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\volch\Desktop\TMS\API Testing" />
+      <recent name="C:\Users\volch\Desktop\TMS\endpoints" />
+      <recent name="C:\Users\volch\Desktop\TMS\payload" />
+      <recent name="C:\Users\volch\Desktop\TMS" />
+      <recent name="C:\Users\volch\Desktop\TMS\HW22\pages" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python tests.Python tests for test_crud.test_crud_scenario">
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for api.tests.test_crud.test_crud_scenario" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="TMS" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/api/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;api.tests.test_crud.test_crud_scenario&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for api.tests.test_delete.test_delete_obj" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="TMS" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/api/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;api.tests.test_delete.test_delete_obj&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_crud.test_crud_scenario" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="TMS" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/api/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_crud.test_crud_scenario&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for api.tests.test_get.test_get_obj" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="TMS" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/api/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;api.tests.test_get.test_get_obj&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for api.tests.test_update.test_update_obj" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="TMS" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/api/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;api.tests.test_update.test_update_obj&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python tests.Python tests for api.tests.test_crud.test_crud_scenario" />
+      <item itemvalue="Python tests.Python tests for api.tests.test_delete.test_delete_obj" />
+      <item itemvalue="Python tests.Python tests for test_crud.test_crud_scenario" />
+      <item itemvalue="Python tests.pytest for api.tests.test_get.test_get_obj" />
+      <item itemvalue="Python tests.pytest for api.tests.test_update.test_update_obj" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Python tests for test_crud.test_crud_scenario" />
+        <item itemvalue="Python tests.Python tests for api.tests.test_crud.test_crud_scenario" />
+        <item itemvalue="Python tests.pytest for api.tests.test_update.test_update_obj" />
+        <item itemvalue="Python tests.Python tests for api.tests.test_delete.test_delete_obj" />
+        <item itemvalue="Python tests.pytest for api.tests.test_get.test_get_obj" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-d7ad00fb9fc3-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23726.102" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b5d5f403-ac42-4ad4-862f-812bc9938357" name="Changes" comment="" />
+      <created>1738928594443</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1738928594443</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Homework 3">
+      <option name="closed" value="true" />
+      <created>1738928888653</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1738928888653</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Homework 4">
+      <option name="closed" value="true" />
+      <created>1738929069935</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1738929069935</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Homework 5">
+      <option name="closed" value="true" />
+      <created>1738929312939</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1738929312939</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Homework 6">
+      <option name="closed" value="true" />
+      <created>1738929511761</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1738929511761</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Homework 7">
+      <option name="closed" value="true" />
+      <created>1738929647966</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1738929647966</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Homework 8">
+      <option name="closed" value="true" />
+      <created>1738929759036</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1738929759036</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Homework 9">
+      <option name="closed" value="true" />
+      <created>1738929897974</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1738929897974</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Homework 10">
+      <option name="closed" value="true" />
+      <created>1738930087795</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1738930087795</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Homework 17">
+      <option name="closed" value="true" />
+      <created>1738930206565</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1738930206565</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Homework 18">
+      <option name="closed" value="true" />
+      <created>1738930383026</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1738930383026</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Homework 19">
+      <option name="closed" value="true" />
+      <created>1738930590104</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1738930590104</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Homework 21">
+      <option name="closed" value="true" />
+      <created>1738930799067</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1738930799067</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Homework 23">
+      <option name="closed" value="true" />
+      <created>1739123494442</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1739123494442</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Homework 24">
+      <option name="closed" value="true" />
+      <created>1739897279506</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1739897279506</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Homework 22 - исправленные комментарии">
+      <option name="closed" value="true" />
+      <created>1739898603805</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1739898603805</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Homework 25 - Client_server structure">
+      <option name="closed" value="true" />
+      <created>1740237884242</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1740237884242</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Homework 27 - Client_server structure -refactor">
+      <option name="closed" value="true" />
+      <created>1740334543399</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1740334543399</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Homework 27 - refactor">
+      <option name="closed" value="true" />
+      <created>1740335019094</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1740335019094</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Jenkins">
+      <option name="closed" value="true" />
+      <created>1740681979533</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1740681979533</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Jenkins">
+      <option name="closed" value="true" />
+      <created>1740682653734</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1740682653734</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Jenkins1">
+      <option name="closed" value="true" />
+      <created>1740682999838</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1740682999838</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Jenkins2">
+      <option name="closed" value="true" />
+      <created>1740683110571</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1740683110571</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Jenkins -Feb27">
+      <option name="closed" value="true" />
+      <created>1740683846959</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1740683846959</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Homework 3" />
+    <MESSAGE value="Homework 4" />
+    <MESSAGE value="Homework 5" />
+    <MESSAGE value="Homework 6" />
+    <MESSAGE value="Homework 7" />
+    <MESSAGE value="Homework 8" />
+    <MESSAGE value="Homework 9" />
+    <MESSAGE value="Homework 10" />
+    <MESSAGE value="Homework 17" />
+    <MESSAGE value="Homework 18" />
+    <MESSAGE value="Homework 19" />
+    <MESSAGE value="Homework 21" />
+    <MESSAGE value="Homework 23" />
+    <MESSAGE value="Homework 24" />
+    <MESSAGE value="Homework 22 - исправленные комментарии" />
+    <MESSAGE value="Homework 25 - Client_server structure" />
+    <MESSAGE value="Homework 27 - Client_server structure -refactor" />
+    <MESSAGE value="Homework 27 - refactor" />
+    <MESSAGE value="Jenkins" />
+    <MESSAGE value="Jenkins1" />
+    <MESSAGE value="Jenkins2" />
+    <MESSAGE value="Jenkins -Feb27" />
+    <option name="LAST_COMMIT_MESSAGE" value="Jenkins -Feb27" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/HW23/Develop/pages/base_page.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/HW23/Develop/tests/e2e/end_to_end.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/api/tests/test_update.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/api/endpoints/update_obj.py</url>
+          <line>16</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
